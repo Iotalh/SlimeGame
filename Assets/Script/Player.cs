@@ -45,5 +45,6 @@ public class Player : MonoBehaviour
 		{
 			TakeDamage(damage);
 		}
+
 	}
 }

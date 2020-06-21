@@ -70,6 +70,7 @@
     <Compile Include="Assets\Script\Cherry.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\EnemyGFX.cs" />
+    <Compile Include="Assets\Script\Finish.cs" />
     <Compile Include="Assets\Script\GameOver.cs" />
     <Compile Include="Assets\Script\HealthBar.cs" />
     <Compile Include="Assets\Script\Player.cs" />
