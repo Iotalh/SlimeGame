@@ -9,15 +9,19 @@ public class Bullet : MonoBehaviour
 	public int damage = 40;
 	public Rigidbody2D rb;
 	public GameObject impactEffect;
+	public AudioSource shootAudio;
+	public AudioSource exploAudio;
 
 	// Use this for initialization
 	void Start()
 	{
+		shootAudio.Play();
 		rb.velocity = transform.right * speed * -1;
 	}
 
 	void OnTriggerEnter2D(Collider2D hitInfo)
 	{
+		exploAudio.Play();
 		if (hitInfo.CompareTag("Enemy"))
 		{
 			//Debug.Log(hitInfo.name);

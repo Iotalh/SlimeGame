@@ -118,6 +118,7 @@ MonoBehaviour:
   heal: 10
   impactEffect: {fileID: 1249565545156299195, guid: 5754c9af193d7724f9f752e50b61539a,
     type: 3}
+  healAudio: {fileID: 0}
 --- !u!58 &2245817870816679191
 CircleCollider2D:
   m_ObjectHideFlags: 0

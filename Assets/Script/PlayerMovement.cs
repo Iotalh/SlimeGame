@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     bool jump = false;
     bool crouch = false;
+    public AudioSource jumpAudio;
 
     public Animator _actionController;
     public bool _idle;
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         if (Input.GetButtonDown("Jump"))
         {
+            jumpAudio.Play();
             jump = true;
         }
 

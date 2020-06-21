@@ -7,12 +7,14 @@ public class Enemy : MonoBehaviour
 {
 	public int health = 100;
 	public GameObject impactEffect;
-	public void TakeDamage(int damage)
+	public AudioSource deathAudio;
+    public void TakeDamage(int damage)
 	{
 		health -= damage;
 
 		if (health <= 0)
 		{
+			deathAudio.Play();
 			Die();
 		}
 	}

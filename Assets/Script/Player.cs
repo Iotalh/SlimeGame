@@ -10,13 +10,22 @@ public class Player : MonoBehaviour
 	public int heal = 10;
 	public int currentHealth;
 	public HealthBar healthBar;
-    private void Start()
+	public AudioSource healAudio;
+
+
+	private void Start()
     {
 		currentHealth = maxHealth;
 		healthBar.setMaxHealth(maxHealth);
 		healthBar.setHealth(currentHealth);
 	}
-
+    private void Update()
+    {
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
+	}
     public void TakeDamage(int damage)
 	{
 		if (currentHealth > 0)
@@ -34,6 +43,7 @@ public class Player : MonoBehaviour
     {
 		if (currentHealth > 0)
 		{
+			healAudio.Play();
 			currentHealth += heal;
 		}
 		healthBar.setHealth(currentHealth);
