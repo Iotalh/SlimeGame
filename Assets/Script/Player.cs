@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 		healthBar.setHealth(currentHealth);
 		if (currentHealth <= 0)
 		{
-			SceneManager.LoadScene(1);
+			SceneManager.LoadScene(2);
 		}
 	}
 
