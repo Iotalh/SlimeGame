@@ -917,8 +917,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "A D \u5DE6\u53F3\u79FB\u52D5\nSpace \u8DF3\u8E8D\n\u6ED1\u9F20\u5DE6\u9375\u5C04\u64CA\nESC
-    \u95DC\u6389"
+  m_Text: "A D \u5DE6\u53F3\u79FB\u52D5\nSpace \u8DF3\u8E8D\n\u6ED1\u9F20\u5DE6\u9375\u5C04\u64CA
+    \u53F3\u9375\u9583\u907F\nESC \u95DC\u6389"
 --- !u!222 &1834737369
 CanvasRenderer:
   m_ObjectHideFlags: 0
