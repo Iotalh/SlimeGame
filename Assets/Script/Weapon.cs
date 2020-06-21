@@ -8,28 +8,39 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float flashCdLeft;
+    public float bulletCdLeft = 0f;
     public FlashIndicator flashIndicator;
+    public BulletIndicator bulletIndicator;
+    public int bulletCount = 3;
     private Rigidbody2D rigid;
     private float flashSpeed = 100f;
     private float flashCd = 10f;
-    private bool isInFlash = false;
+    private float bulletCd = 3f;
+    private bool flashable = true;
+    private int bulletCountMax = 3;
 
     // Update is called once per frame
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         flashIndicator.SetCd(flashCd);
+        bulletIndicator.SetBulletCount(bulletCountMax);
+        bulletIndicator.SetCd(bulletCd);
 
     }
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        ReloadBullet();
+        if (Input.GetButtonDown("Fire1") && bulletCount > 0)
         {
+            bulletCount--;
+            bulletIndicator.SetBulletCount(bulletCount);
+            Debug.Log(bulletCount + " bullet Left");
             Shoot();
         }
-        if (Input.GetButtonDown("Fire2") && !isInFlash)
+        if (Input.GetButtonDown("Fire2") && flashable)
         {
-            isInFlash = true;
+            flashable = false;
             StartCoroutine("Flash");
         }
     }
@@ -37,6 +48,27 @@ public class Weapon : MonoBehaviour
     void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    }
+
+    void ReloadBullet()
+    {
+        if (bulletCount < bulletCountMax && bulletCdLeft == 0f)
+        {
+            bulletCdLeft = bulletCd;
+            bulletIndicator.SetCdLeft(bulletCdLeft);
+        }
+        if (bulletCdLeft > 0f)
+        {
+            bulletCdLeft -= Time.deltaTime;
+            bulletIndicator.SetCdLeft(bulletCdLeft);
+
+            if (bulletCdLeft < 0f)
+            {
+                bulletCdLeft = 0f;
+                bulletCount++;
+                bulletIndicator.SetBulletCount(bulletCount);
+            }
+        }
     }
     IEnumerator Flash()
     {
@@ -56,7 +88,7 @@ public class Weapon : MonoBehaviour
             yield return null;
         }
         flashIndicator.SetCdLeft(flashCdLeft);
-        isInFlash = false;
+        flashable = true;
     }
 
     void CanPenetrateEnemy(bool isStart)
