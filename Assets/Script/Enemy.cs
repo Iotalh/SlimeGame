@@ -5,24 +5,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	public int health = 100;
-	public GameObject impactEffect;
-	public AudioSource deathAudio;
+    public int health = 100;
+    public GameObject impactEffect;
+    public AudioSource deathAudio;
+
+    void Start()
+    {
+        
+    }
     public void TakeDamage(int damage)
-	{
-		health -= damage;
+    {
+        health -= damage;
 
-		if (health <= 0)
-		{
-			deathAudio.Play();
-			Die();
-		}
-	}
+        if (health <= 0)
+        {
+            deathAudio.Play();
+            Die();
+        }
+    }
 
-	void Die()
-	{
-		Instantiate(impactEffect, transform.position, transform.rotation);
-		Destroy(gameObject);
-	}
+    void Die()
+    {
+        Instantiate(impactEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
 
 }
